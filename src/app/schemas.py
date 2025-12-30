@@ -11,14 +11,14 @@ class ScientistCreate(BaseModel):
     degree: Optional[str]
     specialization: Optional[str]
     organization: Optional[str]
-    metadata: Optional[dict]
+    extra_data: Optional[dict]
 
 
 class ScientistRead(ScientistCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class ConferenceCreate(BaseModel):
@@ -28,14 +28,14 @@ class ConferenceCreate(BaseModel):
     date: Optional[date]
     place: Optional[str]
     country: Optional[str]
-    metadata: Optional[dict]
+    extra_data: Optional[dict]
 
 
 class ConferenceRead(ConferenceCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class ParticipationCreate(BaseModel):
@@ -45,11 +45,11 @@ class ParticipationCreate(BaseModel):
     topic: Optional[str]
     duration_minutes: Optional[int]
     notes: Optional[str]
-    metadata: Optional[dict]
+    extra_data: Optional[dict]
 
 
 class ParticipationRead(ParticipationCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

@@ -24,7 +24,7 @@ class Scientist(Base):
     degree = Column(String(100), nullable=True)
     specialization = Column(String(255), nullable=True)
     organization = Column(String(255), nullable=True)
-    metadata = Column(JSONB, nullable=True)
+    extra_data = Column(JSONB, nullable=True)
 
     participations = relationship(
         "Participation", back_populates="scientist", cascade="all, delete-orphan"
@@ -41,7 +41,7 @@ class Conference(Base):
     date = Column(Date, nullable=True)
     place = Column(String(255), nullable=True)
     country = Column(String(100), nullable=True)
-    metadata = Column(JSONB, nullable=True)
+    extra_data = Column(JSONB, nullable=True)
 
     participations = relationship(
         "Participation", back_populates="conference", cascade="all, delete-orphan"
@@ -68,7 +68,7 @@ class Participation(Base):
     topic = Column(String(255), nullable=True)
     duration_minutes = Column(Integer, nullable=True)
     notes = Column(Text, nullable=True)
-    metadata = Column(JSONB, nullable=True)
+    extra_data = Column(JSONB, nullable=True)
 
     scientist = relationship("Scientist", back_populates="participations")
     conference = relationship("Conference", back_populates="participations")
